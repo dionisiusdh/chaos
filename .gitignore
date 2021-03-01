@@ -1,0 +1,6 @@
+*.o
+*.img
+*.bin
+bochsout.txt
+bootloader
+kernel
