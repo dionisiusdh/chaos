@@ -34,9 +34,11 @@ int mod(int x, int y);
 
 int checkFirstLetter(char *string, char *charCheck, int length);
 // Mengembalikan 1-0 value apakah string awalannya sama
+// Mengecek apakah sebuah kata string diawali huruf pertama charCheck
 
 int len(char *string, int capString);
 // Mengembalikan panjang string misal 'ABC' () => { return 3 }
+// Mereturn panjang dari sebuah string dengan batas maksimum capString
 
 int indexOfPath(char parentIndex, char *path);
 // Mendapatkan indeks dari file path
@@ -74,7 +76,7 @@ int main() {
 	printString("  _____.,-#%&$@%#&#~,._____                                  \r\n");       
 
 
-	printString("\r\nHello\r\n");
+	printString("\r\nHelloooo\r\n");
 	printString("Test input string:\r\n");
 	readString(line);
 	printString("\r\nTest print variable:\r\n");
@@ -192,7 +194,11 @@ void writeSector(char *buffer, int sector){
 
 
 int checkFirstLetter(char *string, char *charCheck, int length){
-	for (int i = 0; i < length; i++) {
+	// Mengembalikan 1-0 value apakah string awalannya sama
+	// Mengecek apakah sebuah kata string diawali huruf pertama charCheck
+	int i;
+
+	for (i = 0; i < length; i++) {
 		if (string[i] != charCheck[i]){
 			return 0;
 		} else if (charCheck[i] == 0){
@@ -204,6 +210,8 @@ int checkFirstLetter(char *string, char *charCheck, int length){
 }
 
 int len(char *string, int capString){
+	// Mengembalikan panjang string misal 'ABC' () => { return 3 }
+	// Mereturn panjang dari sebuah string dengan batas maksimum capString
 	int count = 0;
 	for (count = 0; count < capString; count++) {
 		if (string[count] == 0) {
@@ -213,7 +221,7 @@ int len(char *string, int capString){
 }
 
 int indexOfPath(char parentIndex, char *path){
-// Mendapatkan indeks dari file path
+	// Mendapatkan indeks dari file path
 	int storeSize = 512; char files[1024];
 	char found = 0; char numCapFile = 0x40;
 	char size = 0x10; char currentPath = 0;
@@ -287,7 +295,7 @@ void readFile(char *buffer, char *path, int *result, char parentIndex) {
 
 	int shiftConditional = fileIdx >> 8;
 
-	fileIdx = getPathIndex(parentIndex, path);
+	fileIdx = indexOfPath(parentIndex, path);
 	if (fileIdx == -1) {
 		*result = -1;
 		return;
@@ -312,4 +320,8 @@ void readFile(char *buffer, char *path, int *result, char parentIndex) {
 		secNum++;
 	}
 	*result = 1;
+}
+
+void writeFile(char *buffer, char *path, int *sectors, char parentIndex){
+	// Menulis file
 }
