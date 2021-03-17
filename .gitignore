@@ -3,4 +3,5 @@
 *.bin
 bochsout.txt
 bootloader
-kernel
+kernel.bin
+.DS_Store
