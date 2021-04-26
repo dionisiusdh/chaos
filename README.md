@@ -14,55 +14,44 @@
 * Simple kernel
 * File system
 * System call functions
-* Read and write string
-* Read and write sector
-* Read, write, and load file
-* Simple shell with cd, ls, cat, ln command
+* File and sector operations
+* Shell (cd, ls, cat, ln, mkdir, mv, cp, rm)
 * Scripts
+* Libraries (String, Math, IO, Boolean)
+* Execute external program
 
 ## How to Run
-1. Make sure you're in the ```./src``` directory
-2. Run ```chmod +x *.sh```
-3. Make a system.img by executing  ```sh make_system.sh``` on your terminal
-4. Generate map.img, files.img, and sectors.img using ```sh make_filesystem.sh``` on your terminal and proceed to 5 before entering anything
-5. Change the content of ```map.img``` with ```hexedit map.img``` referring to the instruction printed by the script
-6. Compile loadFile.c with ```sh loadFile.sh```
-7. Compile the kernel and run the OS all at once using ```check.sh```
-8. Enter ```c``` to the Bochs' console
+1. Make sure you're in the `root` directory
+2. Run `chmod +x *.sh`
+3. If you're running the OS for the first time, make sure that you have all the tools needed or simply run `./get-tools.sh`
+4. To create file system or `fs` in `other`bfolder, run `make filesystemcreator`
+5. To compile, link, and run the OS, execute `./build-run.sh`
+6. To run the program, execute `./run.sh`
+8. Enter `c` to the Bochs' console
 9. Your OS should be running in a new window 
 
-## Scripts
-How to use scripts:<br/>
-    ```chmod +x script.sh```<br/>
-    ```sh script.sh``` 
+## Shell command
+* mv (memindahkan file/folder) : `mv <filename> <dirname>`
+* cp (mengcopy file/folder) : `cp <src> <dest>`
+* mkdir (membuat directory) : `mkdir <dirname>`
+* rm (menghapus file/folder) : `rm <name>`
+* cat (mencetak isi file) : `cat <filename>`
+* ln (membuat symbolic link) : `ln [-s] <target> <linkname>`
+* cd (memindahkan path) : `cd <path>`
+* ls (mengoutput daftar file/folder) : `ls`
+* ./ program (menjalankan program) : `./ <programname>` (dengan spasi)
 
-**List of scripts:**
-* ```check.sh``` : Running operating system (including compile_kernel.sh)
-* ```compile_kernel.sh``` : Compiling kernel.c
-* ```compile_loadFile.sh``` : Compiling loadFile.c
-* ```make_system.sh``` : Initialize system.img
-* ```make_filesystem.sh``` : Initialize file system images including map.img, files.img, and sectors.img
+## Script
+* `all.sh` : Execute build, load test files, dan run
+* `build.sh` : Build and compile OS
+* `load.sh` : Load test files
+* `run.sh` : Run OS without compiling it
 
-## Folder structure
-```
-chaOS
-│
-├── src                     [Source code]
-│   └── kernel /            
-│       └── kernel.c
-│       └── kernel.asm
-│       └── math.c  
-│       └── sector.c
-│       └── string.c  
-│   └── loadFile /        
-│       └── loadFile.c 
-│   └── test /              [ Test files ]
-│       └── test.txt
-│   └── *.sh                [ Scripts ]  
-│   └── if2230.config       [ Configuration file ]  
-│
-├── MILESTONE1.MD        
-│
-└── README.md
-```
+## Our Thanks to
+**Kelompok Mangga - K04** for kindly providing their milestone 2 result. Most of the code is modified from their work.
+| Name | NIM |
+| --- | --- |
+| Gregorius Dimas Baskara | 13519190 |
+| Christian Gunawan | 13519199 | 
+| Tanur Rizaldi Rahardjo | 13519214 |
 

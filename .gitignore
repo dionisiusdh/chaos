@@ -1,7 +1,1 @@
-*.o
-*.img
-*.bin
 bochsout.txt
-bootloader
-kernel.bin
-.DS_Store
